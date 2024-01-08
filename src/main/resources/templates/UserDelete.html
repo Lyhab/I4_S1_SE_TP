@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/User.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}">
+    <script type="text/javascript" th:src="@{/js/UserDelete.js}"></script>
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-8">
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="text-center">Delete</h2>
+                    </div>
+                    <div class="card-body">
+                        <div>
+                            <table class="table table-bordered">
+                                <thead class="">
+                                    <tr class="text-center">
+                                        <th class="w-25">ID</th>
+                                        <th class="w-25">Username</th>
+                                        <th class="w-25">Password</th>
+                                        <th class="w-25">Role</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                        <div class="table-scroll">
+                            <div class="table-scroll">
+                                <table class="table table-bordered">
+                                    <tbody>
+                                        <tr th:each="user, rowStatus : ${userList}" th:object="${user}" th:class="${rowStatus.first} ? 'user-row' : 'user-row'"
+                                            data-user-id="${user.id}" data-user-name="${user.userName}" data-password="${user.password}" data-role="${user.role}"
+                                            class="text-center">
+                                            <td th:text="${user.id}" class="w-25"></td>
+                                            <td th:text="${user.userName}" class="w-25"></td>
+                                            <td th:text="${user.password}" class="w-25"></td>
+                                            <td th:text="${user.role}" class="w-25"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>                        
+                    </div>
+                    <div class="card-footer d-flex justify-content-between">
+                        <a th:href="@{/TP06/Admin_Home}" class="btn btn-secondary px-3 py-2">Back</a>
+                        <div>
+                            Selected ID: <span id="selectedId">0</span>
+                        </div>
+                        <button id="deleteButton" class="btn btn-secondary px-3 py-2" disabled>Delete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal fade" id="deleteConfirmationModal" tabindex="-1" role="dialog" aria-labelledby="deleteConfirmationModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="deleteConfirmationModalLabel">Confirmation</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p class="text-danger">Are you sure you want to delete the following user?</p>
+                    <div>
+                        <strong>User ID:</strong> <span id="selectedUserIdDelete"></span><br>
+                        <strong>Username:</strong> <span id="deleteUsername"></span><br>
+                        <strong>Password:</strong> <span id="deletePassword"></span><br>
+                        <strong>Role:</strong> <span id="deleteRole"></span>
+                    </div>
+                </div>
+                <div class="modal-footer d-flex justify-content-between">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-danger" id="confirmDeleteButton">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>    
+</body>
+</html>

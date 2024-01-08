@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User List</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/User.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}">
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="text-center">Products</h2>
+                    </div>
+                    <div class="card-body">
+                        <div>
+                            <table class="table table-bordered">
+                                <thead class="thead-dark">
+                                    <tr class="text-center">
+                                        <th class="col-2">Product Code</th>
+                                        <th class="col-2">Product Name</th>
+                                        <th class="col-2">Country</th>
+                                        <th class="col-1">Price</th>
+                                        <th class="w-50">Description</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                        <div class="table-scroll">
+                            <table class="table table-bordered">
+                                <tbody>
+                                    <tr th:each="product : ${productList}" class="text-center">
+                                        <td th:text="${product.productCode}" class="col-2"></td>
+                                        <td th:text="${product.productName}" class="col-2"></td>
+                                        <td th:text="${product.country}" class="col-2"></td>
+                                        <td th:text="${product.price}" class="col-1"></td>
+                                        <td th:text="${product.description}" class="w-50"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="card-footer text-center">
+                        <a th:href="@{/TP06/Product_Home}" class="btn btn-secondary px-3 py-2">Back</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

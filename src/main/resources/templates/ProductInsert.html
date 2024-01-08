@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insertion</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/User.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@iconscout/unicons@4.0.8/css/line.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="text-center">Insertion</h2>
+                    </div>
+                    <div class="card-body">
+                        <form th:action="@{/TP06/Product_Insert}" method="post" th:object="${user}">
+                            <div class="mb-3">
+                                <label for="name" class="form-label">Name:</label>
+                                <input type="text" class="form-control" id="name" name="productname" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="country" class="form-label">Country:</label>
+                                <input type="text" class="form-control" id="country" name="country" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="price" class="form-label">Price:</label>
+                                <input type="text" class="form-control" id="price" name="price" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="description" class="form-label">Description:</label>
+                                <input type="text" class="form-control" id="description" name="description" required>
+                            </div>
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-primary">Insert</button>
+                            </div>
+                        </form>
+                        
+                        <div class="text-center mt-2">
+                            <a th:href="@{/TP06/Product_Home}">Back</a>
+                        </div>
+
+                        <div class="alert alert-success text-center mt-3" th:if="${SuccessMessage}">
+                            <strong th:text="${SuccessMessage}"></strong>
+                        </div>                                                                                    
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

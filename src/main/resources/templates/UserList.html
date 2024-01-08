@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User List</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/User.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}">
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-8">
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="text-center">Users</h2>
+                    </div>
+                    <div class="card-body">
+                        <div>
+                            <table class="table table-bordered">
+                                <thead class="thead-dark">
+                                    <tr class="text-center">
+                                        <th class="w-25">ID</th>
+                                        <th class="w-25">Username</th>
+                                        <th class="w-25">Password</th>
+                                        <th class="w-25">Role</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                        <div class="table-scroll">
+                            <table class="table table-bordered">
+                                <tbody>
+                                    <tr th:each="user : ${userList}" class="text-center">
+                                        <td th:text="${user.id}" class="w-25"></td>
+                                        <td th:text="${user.userName}" class="w-25"></td>
+                                        <td th:text="${user.password}" class="w-25"></td>
+                                        <td th:text="${user.role}" class="w-25"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="card-footer text-center">
+                        <a th:href="@{/TP06/Admin_Home}" class="btn btn-secondary px-3 py-2">Back</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
