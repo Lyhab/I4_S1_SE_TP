@@ -1,65 +1,96 @@
 package i4.se.tp.tp06.entity;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 
-// marks User class as a JPA entity, indicating that instances of this class will be persisted to a relational database.
 @Entity
+@Table(name = "OrderItem")
 public class OrderItem {
 
-    @Id// marks the id field as the primary key
-    @GeneratedValue(strategy = GenerationType.IDENTITY)// indicates that the primary key relies on auto-increment
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long orderItemID;
-    
-    @ManyToOne
-    @JoinColumn(name = "orderID", referencedColumnName = "orderID")
-    private Order order;
 
     @ManyToOne
     @JoinColumn(name = "productCode", referencedColumnName = "productCode")
-    private Product product; 
+    private Product product;
 
-    private String unitPrice;
-    private String quantity;
-    public OrderItem(Long orderItemID, Order order, Product product, String unitPrice, String quantity) {
+    @Column(name = "productName")
+    private String productName;
+
+    @ManyToOne
+    @JoinColumn(name = "orderID")
+    private Order order;
+
+    @Column(name = "quantity")
+    private int quantity;
+
+    @Column(name = "unitPrice")
+    private Double unitPrice;    
+
+    public OrderItem(Long orderItemID, Product product, Order order, int quantity, String productName, Double unitPrice) {
         this.orderItemID = orderItemID;
         this.order = order;
         this.product = product;
-        this.unitPrice = unitPrice;
         this.quantity = quantity;
+        this.productName = product.getProductName();
+        this.unitPrice = product.getPrice();
     }
+ 
     public Long getOrderItemID() {
         return orderItemID;
     }
+
     public void setOrderItemID(Long orderItemID) {
         this.orderItemID = orderItemID;
     }
-    public Order getOrder() {
-        return order;
-    }
-    public void setOrder(Order order) {
-        this.order = order;
-    }
+
     public Product getProduct() {
         return product;
     }
+
     public void setProduct(Product product) {
         this.product = product;
     }
-    public String getUnitPrice() {
-        return unitPrice;
+
+    public Order getOrder() {
+        return order;
     }
-    public void setUnitPrice(String unitPrice) {
-        this.unitPrice = unitPrice;
+
+    public void setOrder(Order order) {
+        this.order = order;
     }
-    public String getQuantity() {
+
+    public int getQuantity() {
         return quantity;
     }
-    public void setQuantity(String quantity) {
+
+    public void setQuantity(int quantity) {
         this.quantity = quantity;
+    }
+
+    public String getProductName() {
+        return productName;
+    }
+
+    public void setProductName(String productName) {
+        this.productName = productName;
+    }
+
+    public Double getUnitPrice() {
+        return unitPrice;
+    }
+
+    public void setUnitPrice(Double unitPrice) {
+        this.unitPrice = unitPrice;
+    }
+
+    public OrderItem() {
     }
 }

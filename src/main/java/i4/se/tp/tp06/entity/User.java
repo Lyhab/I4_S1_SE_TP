@@ -14,11 +14,16 @@ public class User {
     @Id
     // indicates that the primary key relies on auto-increment
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")  
     private Long id;
 
     @Column(name = "username")  
     private String userName;
+
+    @Column(name = "password")  
     private String password;
+
+    @Column(name = "role")  
     private String role;
 
     public User(Long id, String userName, String password, String role) {

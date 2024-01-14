@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Home</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/User.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}">
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="text-center">Order Management</h2>
+                    </div>
+                    <div class="card-body text-center">
+                        <div class="mb-3">
+                            <a th:href="@{/TP06/Order_List}" class="btn btn-primary">View order</a>
+                        </div>
+                        <div class="mb-3">
+                            <a th:href="@{/TP06/Order_Insert}" class="btn btn-primary">Insert order</a>
+                        </div>
+                        <div class="mb-3">
+                            <a th:href="@{/TP06/Order_Update}" class="btn btn-primary">Update order</a>
+                        </div>
+                        <div>
+                            <a th:href="@{/TP06/Order_Delete}" class="btn btn-danger">Delete order</a>
+                        </div>
+                    </div>
+                    <div class="card-footer text-center">
+                        <a th:href="@{/TP06/Admin_Home}" class="btn btn-secondary">Back</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

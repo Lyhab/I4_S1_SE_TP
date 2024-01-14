@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/User.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}">
+    <script type="text/javascript" th:src="@{/js/ProductUpdate.js}"></script>
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="text-center">Update</h2>
+                    </div>
+                    <div class="card-body">
+                        <div>
+                            <table class="table table-bordered">
+                                <thead class="">
+                                    <tr class="text-center">
+                                        <th class="col-1">ID</th>
+                                        <th class="col-2">Order Number</th>
+                                        <th class="col-1">Total Price</th>
+                                        <th class="col-2">Order Date</th>
+                                        <th class="w-50">Special Instruction</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                        <div class="table-scroll">
+                            <div class="table-scroll">
+                                <table class="table table-bordered">
+                                    <tbody>
+                                        <tr th:each="order, rowStatus : ${orderList}" th:object="${order}" th:class="${rowStatus.first} ? 'order-row' : 'order-row'"
+                                            data-order-id="${order.orderID}" data-order-number="${order.orderNumber}" data-total-price="${order.totalPrice}" data-order-date="${order.orderDate}" data-special-instruction="${order.specialInstruction}"
+                                            class="text-center">
+                                            <td th:text="${order.orderID}" class="col-1"></td>
+                                            <td th:text="${order.orderNumber}" class="col-2"></td>
+                                            <td th:text="${order.totalPrice}" class="col-1"></td>
+                                            <td th:text="${order.orderDate}" class="col-2"></td>
+                                            <td th:text="${order.specialInstruction}" class="w-50"></td>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>                        
+                    </div>
+                    <div class="card-footer d-flex justify-content-between">
+                        <a th:href="@{/TP06/Product_Home}" class="btn btn-secondary px-3 py-2">Back</a>
+                        <div>
+                            Selected ID: <span id="selectedCode">0</span>
+                        </div>
+                        <button id="updateButton" class="btn btn-secondary px-3 py-2" disabled>Update</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="updateModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="updateModalLabel">Update User</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <!-- Wrap your input fields in a form -->
+                    <form id="updateForm d-flex flex-column">
+                        <div class="form-group p-2">
+                            <label for="selectedCode">Code:</label>
+                            <input type="text" id="selectedCode" class="form-control" readonly>
+                        </div>
+                        <div class="form-group p-2">
+                            <label for="newProductName">Name:</label>
+                            <input type="text" id="newProductName" class="form-control" autocomplete="">
+                        </div>
+                        <div class="form-group p-2">
+                            <label for="newCountry">Country:</label>
+                            <input type="text" id="newCountry" class="form-control" autocomplete="">
+                        </div>
+                        <div class="form-group p-2">
+                            <label for="newPrice">Price:</label>
+                            <input type="text" id="newPrice" class="form-control" autocomplete="">
+                        </div>
+                        <div class="form-group p-2">
+                            <label for="newDescription">Description:</label>
+                            <input type="text" id="newDescription" class="form-control" autocomplete="">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer d-flex justify-content-between">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="saveChangesButton">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>

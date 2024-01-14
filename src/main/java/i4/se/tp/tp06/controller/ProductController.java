@@ -106,7 +106,7 @@ public class ProductController {
     public String User_Insert(@ModelAttribute("product") Product newProduct, HttpServletRequest request, Model model) {
         String productName = request.getParameter("productname");
         String country = request.getParameter("country");
-        String price = request.getParameter("price");
+        Double price = Double.parseDouble(request.getParameter("price"));
         String description = request.getParameter("description");
 
 

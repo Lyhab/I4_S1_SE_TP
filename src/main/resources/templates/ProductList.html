@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User List</title>
-    <link rel="stylesheet" type="text/css" th:href="@{/css/User.css}">
+    <title>List</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/Product.css}">
     <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}">
+    <script type="text/javascript" th:src="@{/js/Product.js}"></script>
 </head>
 <body>
     <div class="container mt-5">
@@ -43,8 +44,10 @@
                             </table>
                         </div>
                     </div>
-                    <div class="card-footer text-center">
+                    <div class="card-footer d-flex justify-content-between">
                         <a th:href="@{/TP06/Product_Home}" class="btn btn-secondary px-3 py-2">Back</a>
+                        <input type="text" id="searchInput" placeholder="Enter product code or name" class="w-25">
+                        <a href="#" class="btn btn-secondary px-3 py-2" id="searchButton">Search</a>
                     </div>
                 </div>
             </div>

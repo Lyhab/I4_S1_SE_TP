@@ -5,9 +5,11 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 // marks User class as a JPA entity, indicating that instances of this class will be persisted to a relational database.
 @Entity
+@Table(name = "Product")
 public class Product {
 
     @Id
@@ -15,19 +17,19 @@ public class Product {
     @Column(name = "productCode")  
     private Long productCode;
 
-    @Column(name = "productName")  
+    @Column(name = "productName")
     private String productName;
 
     @Column(name = "country")  
     private String country;
 
     @Column(name = "price")  
-    private String price;
+    private Double price;
 
     @Column(name = "description")  
     private String description;
 
-    public Product(Long productCode, String productName, String country, String price, String description) {
+    public Product(Long productCode, String productName, String country, Double price, String description) {
         this.productCode = productCode;
         this.productName = productName;
         this.country = country;
@@ -52,10 +54,10 @@ public class Product {
     public void setCountry(String country) {
         this.country = country;
     }
-    public String getPrice() {
+    public Double getPrice() {
         return price;
     }
-    public void setPrice(String price) {
+    public void setPrice(Double price) {
         this.price = price;
     }
     public String getDescription() {

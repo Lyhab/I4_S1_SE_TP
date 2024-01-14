@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order List</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/Product.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}">
+    <script type="text/javascript" th:src="@{/js/Product.js}"></script>
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="text-center">Orders</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-scroll">
+                            <table class="table table-bordered">
+                                <thead class="thead-dark">
+                                    <tr class="text-center">
+                                        <th class="col-1">Order ID</th>
+                                        <th class="col-2">Product</th>
+                                        <th class="col-1">Unit Price</th>
+                                        <th class="col-1">Quantity</th>
+                                        <th class="col-1">Total Price</th> 
+                                        <th class="col-2">Order Date</th>
+                                        <th class="w-25">Special Instruction</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr th:each="order : ${orderList}">
+                                        <td th:text="${order.orderID}" class="col-1 text-center"></td>
+                                        <td class="col-2">
+                                            <ul th:each="orderItem : ${order.orderItems}">
+                                                <span th:text="${orderItem.product.productName}"></span>
+                                            </ul>
+                                        </td>
+                                        <td class="col-1">
+                                            <ul th:each="orderItem : ${order.orderItems}">
+                                                <span th:text="${orderItem.product.Price}"></span>
+                                            </ul>
+                                        </td>
+                                        <td class="col-1">
+                                            <ul th:each="orderItem : ${order.orderItems}">
+                                                <span th:text="${orderItem.quantity}"></span>
+                                            </ul>
+                                        </td>
+                                        <td th:text="${order.totalPrice}" class="col-1 text-center"></td>
+                                        <td th:text="${order.orderDate}" class="col-2 text-center"></td>
+                                        <td th:text="${order.specialInstruction}" class="w-25"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="card-footer d-flex justify-content-between">
+                        <a th:href="@{/TP06/Order_Home}" class="btn btn-secondary px-3 py-2">Back</a>
+                        <input type="text" id="searchInput" placeholder="Enter product code or name" class="w-25">
+                        <a href="#" class="btn btn-secondary px-3 py-2" id="searchButton">Search</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

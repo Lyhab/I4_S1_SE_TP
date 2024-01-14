@@ -25,6 +25,7 @@ dependencies {
 	runtimeOnly 'com.mysql:mysql-connector-j'
 	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	implementation 'org.springframework:spring-tx:5.3.14.RELEASE'
 }
 
 tasks.named('test') {
